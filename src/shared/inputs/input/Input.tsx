@@ -1,15 +1,14 @@
 import { Input as InputAntd, InputProps as InputPropsAntd } from "antd";
-import { InputHTMLAttributes } from "react";
 
 import { BoxInput, TitleInput } from "./input.style";
 
 interface InputProps extends InputPropsAntd {
-  label?: string;
+  title?: string;
 }
-const Input = ({ label, ...props }: InputProps) => {
+const Input = ({ title, ...props }: InputProps) => {
   return (
     <BoxInput>
-      {label && <TitleInput>{label}</TitleInput>}
+      {title && <TitleInput>{title}</TitleInput>}
       <InputAntd {...props} />
     </BoxInput>
   );

@@ -1,3 +1,4 @@
+import Button from "../../../shared/buttons/button/Button";
 import Input from "../../../shared/inputs/input/Input";
 import {
   BackgroundImage,
@@ -5,6 +6,7 @@ import {
   ContainerLoginScreen,
   LimitedContainer,
   LogoImage,
+  TitleLogin,
 } from "../styles/loginScreen.styles";
 
 const LoginScreen = () => {
@@ -14,8 +16,14 @@ const LoginScreen = () => {
         <ContainerLogin>
           <LimitedContainer>
             <LogoImage src="./logo.jpg" />
-            <Input label="Usuário" />
-            <Input label="Senha" />
+            <TitleLogin level={2} type="secondary">
+              LOGIN
+            </TitleLogin>
+            <Input title="USUÁRIO" />
+            <Input title="SENHA" />
+            <Button type="primary" margin="62px 0 16px 0">
+              ENTRAR
+            </Button>
           </LimitedContainer>
         </ContainerLogin>
 
