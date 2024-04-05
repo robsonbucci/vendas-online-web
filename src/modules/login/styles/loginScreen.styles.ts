@@ -27,10 +27,11 @@ export const ContainerLogin = styled.div`
   width: 100%;
   height: 100vh;
   max-width: 646px;
-  z-index: 2;
 `;
 
 export const LimitedContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 498px;
   display: flex;
