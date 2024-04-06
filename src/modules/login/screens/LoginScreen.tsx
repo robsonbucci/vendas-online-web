@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 import Button from "../../../shared/buttons/button/Button";
@@ -19,8 +20,23 @@ const LoginScreen = () => {
     setLoginData({ ...loginData, [id]: value });
   };
 
-  const handleSubmit = () => {
-    console.log(loginData);
+  const handleLogin = async () => {
+    const response = await axios({
+      method: "post",
+      url: "http://localhost:8080/auth",
+      data: {
+        email: loginData.email,
+        password: loginData.password,
+      },
+    })
+      .then((response) => {
+        alert("logado com sucesso");
+        return response.data;
+      })
+      .catch(() => {
+        alert("usuário ou senha invalidos");
+      });
+    console.log(response);
   };
 
   return (
@@ -35,9 +51,9 @@ const LoginScreen = () => {
             <Input
               title="USUÁRIO"
               margin="32px 0 0 "
-              id="username"
+              id="email"
               onChange={handleChange}
-              value={loginData.username}
+              value={loginData.email}
             />
             <Input
               title="SENHA"
@@ -47,11 +63,7 @@ const LoginScreen = () => {
               onChange={handleChange}
               value={loginData.password}
             />
-            <Button
-              type="primary"
-              margin="62px 0 16px 0"
-              onClick={handleSubmit}
-            >
+            <Button type="primary" margin="62px 0 16px 0" onClick={handleLogin}>
               ENTRAR
             </Button>
           </LimitedContainer>
