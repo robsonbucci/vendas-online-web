@@ -2,13 +2,13 @@ import axios from "axios";
 import React from "react";
 
 import Button from "../../../shared/buttons/button/Button";
+import SVGLogo from "../../../shared/icons/SVGLogo";
 import Input from "../../../shared/inputs/input/Input";
 import {
   BackgroundImage,
   ContainerLogin,
   ContainerLoginScreen,
   LimitedContainer,
-  LogoImage,
   TitleLogin,
 } from "../styles/loginScreen.styles";
 
@@ -21,7 +21,7 @@ const LoginScreen = () => {
   };
 
   const handleLogin = async () => {
-    const response = await axios({
+    await axios({
       method: "post",
       url: "http://localhost:8080/auth",
       data: {
@@ -31,12 +31,12 @@ const LoginScreen = () => {
     })
       .then((response) => {
         alert("logado com sucesso");
+        console.log(response);
         return response.data;
       })
       .catch(() => {
         alert("usuário ou senha invalidos");
       });
-    console.log(response);
   };
 
   return (
@@ -44,7 +44,7 @@ const LoginScreen = () => {
       <ContainerLoginScreen>
         <ContainerLogin>
           <LimitedContainer>
-            <LogoImage src="./logo.jpg" />
+            <SVGLogo />
             <TitleLogin level={2} type="secondary">
               LOGIN
             </TitleLogin>
